@@ -2,11 +2,16 @@ package xml.xsd;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.List;
 
 @XmlRootElement
 public class Address {
+    @XmlElementWrapper(name="Buttons")
+    @XmlElement(name="Button")
+    public List<Button> buttonList;
     private String version;
 
     public String getVersion() {

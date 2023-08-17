@@ -21,9 +21,9 @@ public class XsdMain {
     private static final String FULL_PERSON_XSD_PATH = "xsd/full-persons.xsd";
 
     public static void main(String... args) throws IOException, SAXException, JAXBException {
-        Address address=new Address();
-        address.setZip(new Zip());
-        address.setCity("fds");
+//        Address address=new Address();
+//        address.setZip(new Zip());
+//        address.setCity("fds");
         JAXBContext context=JAXBContext.newInstance(Address.class);
         Unmarshaller unmarshaller=new Unmarshaller();
         Address unmarshal = unmarshaller.unmarshal();
