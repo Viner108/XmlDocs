@@ -16,13 +16,14 @@ public class JAXBExample {
         token.setLowLevel(new HashMap<Info, Zip>() {{ put(new Info("LK1","LV1"), new Zip("sdsd","werwere")); put(new Info("LK2","LV2"), new Zip("sdsd2","werwe")); }});
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(Token.class);
+            Unmarshaller unmarshaller=jaxbContext.createUnmarshaller();
+            Token token1 = (Token) unmarshaller.unmarshal(new File(JAXBExample.class.getClassLoader().getResource(XSD_TOKEN_1_XML).getFile()));
+            token1.toString();
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            jaxbMarshaller.marshal(token, System.out);
+//            jaxbMarshaller.marshal(token, System.out);
+            jaxbMarshaller.marshal(token1, new File("library/token1.xml"));
 
-            Unmarshaller unmarshaller=jaxbContext.createUnmarshaller();
-            Token address2 = (Token) unmarshaller.unmarshal(new File(JAXBExample.class.getClassLoader().getResource(XSD_TOKEN_1_XML).getFile()));
-            address2.toString();
         } catch (JAXBException e) {
             e.printStackTrace();
         }
